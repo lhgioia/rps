@@ -2,26 +2,61 @@
 
 let getComputerChoice = function() {
     let randomNumber = Math.random();
-    if (randomNumber < 0.33) return "rock";
-    if (randomNumber >= 0.33 && randomNumber <= 0.66) return "paper";
+    if (randomNumber <= 0.33) return "rock";
+    if (randomNumber > 0.33 && randomNumber <= 0.66) return "paper";
     if (randomNumber > 0.66) return "scissors";
 };
 
+let message = "";
+let playerWins = 0;
+let computerWins = 0;
+
 let playRound = function(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase();
-    if (playerSelection == computerSelection) return "It's a tie. Play again.";
-    if (playerSelection == "rock" && computerSelection == "paper") return "Paper beats rock. You lose this round.";
-    if (playerSelection == "rock" && computerSelection == "scissors") return "Rock beats scissors. You win this round.";
-    if (playerSelection == "paper" && computerSelection == "scissors") return "Scissors beats paper. You lose this round.";
-    if (playerSelection == "paper" && computerSelection == "rock") return "Paper beats rock. You win this round.";
-    if (playerSelection == "scissors" && computerSelection == "rock") return "Rock beats scissors. You lose this round.";
-    if (playerSelection == "scissors" && computerSelection == "paper") return "Scissors beats paper. You win this round.";
+
+    if (playerSelection == computerSelection) {
+
+        message = "It's a tie. Both players chose " + playerSelection + ". " + 
+        "The score is " + playerWins + " - " + computerWins;
+
+    };
+    if (playerSelection == "rock" && computerSelection == "paper" || 
+        playerSelection == "paper" && computerSelection == "scissors" || 
+        playerSelection == "scissors" && computerSelection == "rock") {
+        
+        computerWins = computerWins + 1;
+
+        if (computerWins == 5) {
+            message = "Game over. The computer won " + playerWins + " - " + computerWins;
+        } else {
+            message = "The computer wins. " + playerSelection + " loses to " + computerSelection + ". " + 
+            "The score is " + playerWins + " - " + computerWins;
+        };
+    };
+    if (playerSelection == "rock" && computerSelection == "scissors" || 
+        playerSelection == "paper" && computerSelection == "rock" || 
+        playerSelection == "scissors" && computerSelection == "paper") {
+
+        playerWins = playerWins + 1;
+
+        if (playerWins == 5) {
+            message = "Congratulations! You beat the computer " + playerWins + " - " + computerWins;
+        } else {
+            message = "You win! " + playerSelection + " beats " + computerSelection + ". " + 
+            "The score is " + playerWins + " - " + computerWins;
+        };
+    };
 };
 
 let game = function(){
-    for (let i = 0; i < 5; i++){
+    while (playerWins < 5 && computerWins < 5) {
+
         const playerSelection = prompt("Choose rock, paper, or scissors", "rock");
         const computerSelection = getComputerChoice();
-        alert(playRound(playerSelection, computerSelection));
+
+        playRound(playerSelection, computerSelection);
+        alert(message);
     }
 };
+
+game();
