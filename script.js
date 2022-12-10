@@ -41,7 +41,7 @@ let playRound = function(playerSelection, computerSelection) {
 
     if (playerSelection == computerSelection) {
 
-        message = "It's a tie. Both players chose " + playerSelection + ". " + 
+        message = "This round is a tie. Both players chose " + playerSelection + ". " + 
         "The score is " + playerWins + " - " + computerWins;
 
     };
@@ -52,9 +52,9 @@ let playRound = function(playerSelection, computerSelection) {
         computerWins = computerWins + 1;
 
         if (computerWins == 5) {
-            message = "Game over. The computer won " + playerWins + " - " + computerWins;
+            message = "Game over. The computer won the game " + playerWins + " - " + computerWins;
         } else {
-            message = "The computer wins. " + playerSelection + " loses to " + computerSelection + ". " + 
+            message = "The computer wins this round. " + playerSelection + " loses to " + computerSelection + ". " + 
             "The score is " + playerWins + " - " + computerWins;
         };
     };
@@ -67,22 +67,22 @@ let playRound = function(playerSelection, computerSelection) {
         if (playerWins == 5) {
             message = "Congratulations! You beat the computer " + playerWins + " - " + computerWins;
         } else {
-            message = "You win! " + playerSelection + " beats " + computerSelection + ". " + 
+            message = "You win this round! " + playerSelection + " beats " + computerSelection + ". " + 
             "The score is " + playerWins + " - " + computerWins;
         };
     };
 };
 
-let game = function(){
-    while (playerWins < 5 && computerWins < 5) {
+// let game = function(){
+//     while (playerWins < 5 && computerWins < 5) {
 
-        // const playerSelection = prompt("Choose rock, paper, or scissors", "rock");
-        const computerSelection = getComputerChoice();
+//         // const playerSelection = prompt("Choose rock, paper, or scissors", "rock");
+//         const computerSelection = getComputerChoice();
 
-        playRound(playerSelection, computerSelection);
-        // alert(message);
-        resultsDiv.textContent = message;
-    }
-};
+//         playRound(playerSelection, computerSelection);
+//         // alert(message);
+//         resultsDiv.textContent = message;
+//     }
+// };
 
 // game();
