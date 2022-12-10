@@ -72,17 +72,3 @@ let playRound = function(playerSelection, computerSelection) {
         };
     };
 };
-
-// let game = function(){
-//     while (playerWins < 5 && computerWins < 5) {
-
-//         // const playerSelection = prompt("Choose rock, paper, or scissors", "rock");
-//         const computerSelection = getComputerChoice();
-
-//         playRound(playerSelection, computerSelection);
-//         // alert(message);
-//         resultsDiv.textContent = message;
-//     }
-// };
-
-// game();
