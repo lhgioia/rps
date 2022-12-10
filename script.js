@@ -12,12 +12,27 @@ let playerWins = 0;
 let computerWins = 0;
 let playerSelection = ""
 
-const rpsChoiceButtons = document.querySelectorAll('.rpsChoiceButton')
+let resetGame = function() {
+    message = "";
+    playerWins = 0;
+    computerWins = 0;
+    playerSelection = ""
+}
+
+const resultsDiv = document.querySelector('.resultsDiv');
+
+const rpsChoiceButtons = document.querySelectorAll('.rpsChoiceButton');
 
 rpsChoiceButtons.forEach((button) => {
     button.addEventListener('click', () => {
+        if (playerWins == 5 || computerWins == 5) {
+            resetGame();
+        }
         // playerSelection = button.id;
         playerSelection = button.textContent;
+        const computerSelection = getComputerChoice();
+        playRound(playerSelection, computerSelection);
+        resultsDiv.textContent = message;
     });
 });
 
@@ -58,15 +73,16 @@ let playRound = function(playerSelection, computerSelection) {
     };
 };
 
-// let game = function(){
-//     while (playerWins < 5 && computerWins < 5) {
+let game = function(){
+    while (playerWins < 5 && computerWins < 5) {
 
-//         // const playerSelection = prompt("Choose rock, paper, or scissors", "rock");
-//         const computerSelection = getComputerChoice();
+        // const playerSelection = prompt("Choose rock, paper, or scissors", "rock");
+        const computerSelection = getComputerChoice();
 
-//         playRound(playerSelection, computerSelection);
-//         alert(message);
-//     }
-// };
+        playRound(playerSelection, computerSelection);
+        // alert(message);
+        resultsDiv.textContent = message;
+    }
+};
 
 // game();
